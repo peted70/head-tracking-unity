@@ -32,7 +32,6 @@ public class MouseLook : MonoBehaviour {
 
 	void Update ()
 	{
-#if UNITY_EDITOR
 		if (axes == RotationAxes.MouseXAndY)
 		{
 			float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
@@ -53,7 +52,6 @@ public class MouseLook : MonoBehaviour {
 			
 			transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
 		}
-#endif
 	}
 	
 	void Start ()
