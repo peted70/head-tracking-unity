@@ -81,7 +81,8 @@ public class ALPSNavigation : MonoBehaviour {
 		if (pitch >= ForwardLowerBound && pitch <= ForwardUpperBound) {
 			if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WP8Player)
             {
-				if (!moving){
+                //Handheld.Vibrate();
+                if (!moving){
 #if UNITY_ANDROID
                     ALPSAndroid.Vibrate(20);
 #elif UNITY_WP8 || UNITY_WINRT
@@ -94,7 +95,7 @@ public class ALPSNavigation : MonoBehaviour {
 		} else if (pitch >= BackwardUpperBound && pitch <= BackwardLowerBound) {
 			if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WP8Player)
             {
-				if (!moving){
+                if (!moving){
 #if UNITY_ANDROID
                     ALPSAndroid.Vibrate(20);
 #elif UNITY_WP8 || UNITY_WINRT
