@@ -88,7 +88,7 @@ public class ALPSController : MonoBehaviour {
 #elif UNITY_WP8 || UNITY_WINRT
 			ALPSWP8.Init ();
 			Screen.orientation = ScreenOrientation.LandscapeLeft;
-			head.AddComponent("ALPSGyro");
+			head.AddComponent("HeadTrack");
 			screenWidthPix = ALPSWP8.WidthPixels ();
 			screenHeightPix = ALPSWP8.HeightPixels ();
 #endif
@@ -168,12 +168,12 @@ public class ALPSController : MonoBehaviour {
 	/// <param name="_source">Source texture on which the camera renders.</param>
 	private void RenderEye(bool _leftEye, RenderTexture _source){
 		mat.mainTexture = _source;
-		mat.SetVector("_SHIFT",new Vector2(_leftEye?0:0.5f,0));
-		float convergeOffset = ((deviceConfig.Width * 0.5f) - deviceConfig.IPD) / deviceConfig.Width;
-		mat.SetVector("_CONVERGE",new Vector2((_leftEye?1f:-1f)*convergeOffset,0));
-		mat.SetFloat ("_AberrationOffset",deviceConfig.enableChromaticCorrection?deviceConfig.chromaticCorrection:0f);
-		float ratio = (deviceConfig.IPD*0.5f) / deviceConfig.Width;
-		mat.SetVector ("_Center",new Vector2(0.5f+(_leftEye?-ratio:ratio),0.5f));
+        mat.SetVector("_SHIFT", new Vector2(_leftEye ? 0 : 0.5f, 0));
+        float convergeOffset = ((deviceConfig.Width * 0.5f) - deviceConfig.IPD) / deviceConfig.Width;
+        mat.SetVector("_CONVERGE", new Vector2((_leftEye ? 1f : -1f) * convergeOffset, 0));
+        mat.SetFloat("_AberrationOffset", deviceConfig.enableChromaticCorrection ? deviceConfig.chromaticCorrection : 0f);
+        float ratio = (deviceConfig.IPD * 0.5f) / deviceConfig.Width;
+        mat.SetVector("_Center", new Vector2(0.5f + (_leftEye ? -ratio : ratio), 0.5f));
 
 		GL.Viewport (_leftEye ? rectLeft : rectRight);
 
