@@ -66,7 +66,7 @@ public class ALPSNavigation : MonoBehaviour {
 		BackwardLimit = 360 - backwardLimit;
 
 		controller = this.gameObject.GetComponent ("CharacterController") as CharacterController;
-		this.gameObject.AddComponent ("CharacterMotor");
+		this.gameObject.AddComponent <CharacterMotor>();
 		head = GameObject.Find ("ALPSHead");
 		if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WP8Player) {
 			moving = false;
